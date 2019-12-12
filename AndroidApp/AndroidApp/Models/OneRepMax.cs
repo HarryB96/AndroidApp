@@ -5,6 +5,8 @@ using SQLite;
 
 namespace AndroidApp.Models
 {
+    //Creating the SQLite table for storing One Rep Maxes
+
     [Table("OneRepMaxes")]
     class OneRepMax
     {

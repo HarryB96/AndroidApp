@@ -13,6 +13,7 @@ namespace AndroidApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class OneRepMaxDetailPage : ContentPage
     {
+        //Constructors for the details page
         public OneRepMaxDetailPage()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace AndroidApp.Pages
 
         OneRepMax thisExercise;
 
+        //Getting the details of the exercise selection from the SQLite database
         public async void oneRepMaxDetails(string exerciseName)
         {
             List<OneRepMax> oneRepMaxes = await App.ORMRepo.GetOneRepMaxesAsync();
@@ -40,11 +42,13 @@ namespace AndroidApp.Pages
             }
         }
 
+        //Button click event for editing the details
         private void EditButton_Clicked(object sender, EventArgs e)
         {
 
         }
 
+        //Button click event for deleting an entry
         private async void DeleteButton_Clicked(object sender, EventArgs e)
         {
             bool answer = await DisplayAlert("Delete?", "Are you sure?", "Yes", "No");

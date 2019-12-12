@@ -15,15 +15,20 @@ namespace AndroidApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StopwatchPage : ContentPage
     {
+        //Initialising a new stopwatch
         public static Stopwatch s = new Stopwatch();
 
+        //Constructor for the stopwatch page
         public StopwatchPage()
         {
             InitializeComponent();
             Output.Text = "00:00:00.00";
         }
+
+        //Button click event for the start button
         private void StartButton_Clicked(object sender, EventArgs e)
         {
+            //Timer to update the screen when the stopwatch ticks
             Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
             {
                 TimeSpan ts = s.Elapsed;
@@ -32,6 +37,7 @@ namespace AndroidApp.Pages
                 return true;
             });
 
+            //If and else statement to change the start button from start to stop
             if (StartButton.Text =="Start")
             {
                 s.Start();
@@ -46,7 +52,7 @@ namespace AndroidApp.Pages
             }
         }
 
-
+        //Button click event to reset the stopwatch
         private void ResetButton_Clicked(object sender, EventArgs e)
         {
             s.Reset();

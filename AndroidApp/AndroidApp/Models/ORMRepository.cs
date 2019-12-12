@@ -13,18 +13,20 @@ namespace AndroidApp
         SQLiteAsyncConnection conn;
         public string StatusMessage { get; set; }
 
+        //Constructor for creating the One Rep Max repository
         public ORMRepository(string dbPath)
         {
             conn = new SQLiteAsyncConnection(dbPath);
             conn.CreateTableAsync<OneRepMax>().Wait();
         }
 
+        //Asynchronous task for adding  a new One Rep Max to the database
         public async Task AddNewORMAsync(string exercise, double oneRep, double weight, int reps)
         {
             int result = 0;
             try
             {
-                //basic validation to ensure a name was entered
+                //basic validation to ensure an exercise was entered
                 if (string.IsNullOrEmpty(exercise))
                     throw new Exception("Valid exercise required");
 
@@ -38,11 +40,13 @@ namespace AndroidApp
             }
         }
 
+        //Asynchronous task to remove an entry form the database
         public async Task RemoveORMAsync(OneRepMax oneToDelete)
         {
             await conn.DeleteAsync(oneToDelete);
         }
 
+        //Asynchronous task to get the information from the database and add it to a list of one rep maxes
         public async Task<List<OneRepMax>> GetOneRepMaxesAsync()
         {
             try

@@ -15,29 +15,31 @@ namespace AndroidApp.Pages
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ORMPage : ContentPage
     {
+        //Constructor for the One Rep Max page
         public ORMPage()
         {
             InitializeComponent();
             Initialise();
             this.OnAppearing();
         }
-        
+
+        //Button click event for calculating One Rep Maxes
         private void ClaculateButton_Clicked(object sender, EventArgs e)
         {
-                double weight = 0;
-                double.TryParse(WeightEditor.Text, out weight);
-                int reps = 0;
-                int.TryParse(RepsEditor.Text, out reps);
+                double.TryParse(WeightEditor.Text, out double weight);
+                int.TryParse(RepsEditor.Text, out int reps);
                 double oneRepMax = Math.Round((weight * 36) / (37 - reps), 1);
                 ORMEditor.Text = oneRepMax.ToString();
                 ClearButton.IsEnabled = true;
         }
 
+        //Button click event for clearing all information on the page
         private void ClearButton_Clicked(object sender, EventArgs e)
         {
             Clear();
         }
 
+        //Button click event for saving a One Rep Max
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
             double.TryParse(WeightEditor.Text, out double weight);
@@ -48,6 +50,7 @@ namespace AndroidApp.Pages
             Initialise();
         }
 
+        //Initialising the source for the list view  and clearing all data from the page
         public async void Initialise()
         {
             exerciseEntry.Text = string.Empty;
@@ -57,6 +60,7 @@ namespace AndroidApp.Pages
             Clear();
         }
 
+        //Clear method preventing repeat code
         private void Clear()
         {
             ORMEditor.Text = string.Empty;
@@ -65,12 +69,14 @@ namespace AndroidApp.Pages
             ClearButton.IsEnabled = false;
         }
 
+        //Select item event
         private async void oneRepMaxList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as OneRepMax;
             await Navigation.PushAsync(new OneRepMaxDetailPage(item.ExerciseName), true);
         }
         
+        //Method for refreshing the page when an entry is deleted
         protected override void OnAppearing()
         {
             Initialise();
