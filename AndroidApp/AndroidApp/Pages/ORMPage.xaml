@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             ios:Page.UseSafeArea="true"
+             mc:Ignorable="d"
+             Title="One Rep Max"
+             x:Class="AndroidApp.Pages.ORMPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            
+            <Editor x:Name="exerciseEntry" Grid.Row="0" Grid.Column="1"/>
+            <Button x:Name="SaveButton" Text="Save" Grid.Row ="0" Grid.Column="3" Clicked="SaveButton_Clicked"/>
+            <Label Text="Weight" Grid.Row="1" Grid.Column="1" FontSize="Large"/>
+            <Label Text="Reps" Grid.Row="2" Grid.Column="1" FontSize="Large"/>
+            <Label Text="1RM" Grid.Row="3" Grid.Column="1" FontSize="Large"/>
+            <Editor x:Name="WeightEditor" Grid.Row="1" Grid.Column="3"/>
+            <Editor x:Name="RepsEditor" Grid.Row="2" Grid.Column="3"/>
+            <Editor x:Name="ORMEditor" Grid.Row="3" Grid.Column="3" IsReadOnly="True"/>
+            <Button x:Name="ClaculateButton" Text="Calculate" Grid.Row="4" Grid.Column="1" Clicked="ClaculateButton_Clicked"/>
+            <Button x:Name="ClearButton" Text="Clear" Grid.Row="4" Grid.Column="3" IsEnabled="False" Clicked="ClearButton_Clicked"/>
+
+            <ListView x:Name="oneRepMaxList" Grid.Row="5" Grid.ColumnSpan="5" ItemTapped="oneRepMaxList_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="30">
+                            <StackLayout Padding="5">
+                                <Label Text="{Binding ExerciseName}" FontSize="Large" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
