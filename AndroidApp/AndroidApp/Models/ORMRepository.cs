@@ -19,7 +19,7 @@ namespace AndroidApp
             conn.CreateTableAsync<OneRepMax>().Wait();
         }
 
-        public async Task AddNewORMAsync(string exercise)
+        public async Task AddNewORMAsync(string exercise, double oneRep, double weight, int reps)
         {
             int result = 0;
             try
@@ -28,7 +28,7 @@ namespace AndroidApp
                 if (string.IsNullOrEmpty(exercise))
                     throw new Exception("Valid exercise required");
 
-                result = await conn.InsertAsync(new OneRepMax { ExerciseName = exercise });
+                result = await conn.InsertAsync(new OneRepMax { ExerciseName = exercise , OneRep = oneRep, Reps = reps, Weight = weight});
 
                 StatusMessage = string.Format("{0} record(s) added [Name: {1})", result, exercise);
             }
@@ -36,6 +36,11 @@ namespace AndroidApp
             {
                 StatusMessage = string.Format("Failed to add {0}. Error: {1}", exercise, ex.Message);
             }
+        }
+
+        public async Task RemoveORMAsync(OneRepMax oneToDelete)
+        {
+            await conn.DeleteAsync(oneToDelete);
         }
 
         public async Task<List<OneRepMax>> GetOneRepMaxesAsync()

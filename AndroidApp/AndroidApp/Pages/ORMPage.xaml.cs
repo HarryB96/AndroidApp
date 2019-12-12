@@ -19,8 +19,9 @@ namespace AndroidApp.Pages
         {
             InitializeComponent();
             Initialise();
+            this.OnAppearing();
         }
-
+        
         private void ClaculateButton_Clicked(object sender, EventArgs e)
         {
                 double weight = 0;
@@ -39,8 +40,10 @@ namespace AndroidApp.Pages
 
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
-            await App.ORMRepo.AddNewORMAsync(exerciseEntry.Text);
-            exerciseEntry.Text = string.Empty;
+            double.TryParse(WeightEditor.Text, out double weight);
+            int.TryParse(RepsEditor.Text, out int reps);
+            double oneRepMax = Math.Round((weight * 36) / (37 - reps), 1);
+            await App.ORMRepo.AddNewORMAsync(exerciseEntry.Text, oneRepMax, weight, reps);
             await DisplayAlert("Added", "Your new one rep max has been added", "OK");
             Initialise();
         }
@@ -62,9 +65,15 @@ namespace AndroidApp.Pages
             ClearButton.IsEnabled = false;
         }
 
-        private void oneRepMaxList_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void oneRepMaxList_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-
+            var item = e.Item as OneRepMax;
+            await Navigation.PushAsync(new OneRepMaxDetailPage(item.ExerciseName), true);
+        }
+        
+        protected override void OnAppearing()
+        {
+            Initialise();
         }
     }
 }

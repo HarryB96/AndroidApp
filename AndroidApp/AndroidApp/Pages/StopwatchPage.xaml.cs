@@ -40,7 +40,6 @@ namespace AndroidApp.Pages
             }
             else
             {
-
                 StartButton.Text = "Start";
                 s.Stop();
                 ResetButton.IsEnabled = true;
