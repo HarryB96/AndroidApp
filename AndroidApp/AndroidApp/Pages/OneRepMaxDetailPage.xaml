@@ -25,7 +25,7 @@
             </Grid.ColumnDefinitions>
             <Label Text="One Rep Max" FontSize="Large" Grid.Column="1" Grid.Row="0" VerticalOptions="CenterAndExpand"/>
             <Editor x:Name="ORMOutPut" Grid.Column="3" Grid.Row="0" IsReadOnly="True"/>
-            <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Grid.Row="5" Grid.Column="1"/>
+            <Button x:Name="EditButton" Text="Edit" Clicked="EditButton_Clicked" Grid.Row="5" Grid.Column="1" />
             <Button x:Name="DeleteButton" Text="Delete" Clicked="DeleteButton_Clicked" Grid.Row="5" Grid.Column="3"/>
         </Grid>
     </ContentPage.Content>
