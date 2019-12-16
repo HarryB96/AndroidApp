@@ -54,7 +54,6 @@ namespace AndroidApp.Pages
         public async void Initialise()
         {
             exerciseEntry.Text = string.Empty;
-            oneRepMaxList.ItemsSource = null;
             List<OneRepMax> oneRepMaxes = await App.ORMRepo.GetOneRepMaxesAsync();
             oneRepMaxList.ItemsSource = oneRepMaxes;
             Clear();
