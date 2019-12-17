@@ -6,6 +6,10 @@ using AndroidApp.Models;
 using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
+using System.Net.Http;
+using Newtonsoft.Json;
+using System.Net.Http.Headers;
+using System.Reflection;
 
 namespace AndroidApp
 {
@@ -19,7 +23,8 @@ namespace AndroidApp
         {
             conn = new SQLiteAsyncConnection(dbPath);
             conn.CreateTableAsync<Program>().Wait();
-            foreach (var item in GetDataFromFile().Result)
+            var list = GetJsonDataAsync().Result;
+            foreach (var item in list)
             {
                 conn.InsertAsync(item);
             }
@@ -36,26 +41,18 @@ namespace AndroidApp
             }
             return new List<Program>();
         }
-        public async Task<List<Program>> GetDataFromFile()
+        public async Task<List<Program>> GetJsonDataAsync()
         {
-            StreamReader sr = new StreamReader(@"C:\Users\Harry Barnett\Documents\ProgramContent.csv");
-            string data = await sr.ReadToEndAsync();
-            string[] dataArray = data.Split();
-            List<Program> InitialProgram = new List<Program>();
-            foreach (var item in dataArray)
+            string jsonFileName = "ProgramContent.json";
+            List<Program> programFromJson = new List<Program>();
+            var assembly = typeof(MainPage).GetTypeInfo().Assembly;
+            Stream stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.{jsonFileName}");
+            using (var reader = new StreamReader(stream))
             {
-                string[] itemBreakdown = item.Split(',');
-                InitialProgram.Add(new Program()
-                {
-                    ExerciseName = itemBreakdown[0],
-                    Sets = int.Parse(itemBreakdown[1]),
-                    Reps = int.Parse(itemBreakdown[2]),
-                    Weight = double.Parse(itemBreakdown[3]),
-                    Superset = itemBreakdown[4],
-                    Day = itemBreakdown[5]
-                });
+                var jsonString = await reader.ReadToEndAsync();
+                programFromJson = JsonConvert.DeserializeObject<List<Program>>(jsonString);
             }
-            return InitialProgram;
+            return programFromJson;
         }
     }
 }

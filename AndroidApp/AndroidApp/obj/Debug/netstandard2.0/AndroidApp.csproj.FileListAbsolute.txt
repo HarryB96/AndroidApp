@@ -2,7 +2,6 @@ C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\bin\Debug\
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\bin\Debug\netstandard2.0\AndroidApp.dll
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\bin\Debug\netstandard2.0\ref\AndroidApp.dll
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\bin\Debug\netstandard2.0\AndroidApp.pdb
-C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\AndroidApp.csprojAssemblyReference.cache
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\MainPage.xaml.g.cs
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\Pages\OneRepMaxDetailPage.xaml.g.cs
@@ -15,3 +14,4 @@ C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\AndroidApp.dll
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\ref\AndroidApp.dll
 C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\AndroidApp.pdb
+C:\Users\Harry Barnett\Engineering45\AndroidApp\AndroidApp\AndroidApp\obj\Debug\netstandard2.0\AndroidApp.csprojAssemblyReference.cache
