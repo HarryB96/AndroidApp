@@ -40,12 +40,31 @@ namespace AndroidApp.Pages
                     thisExercise = exercise;
                 }
             }
+            WeightEditor.Text = thisExercise.Weight.ToString();
+            RepsEditor.Text = thisExercise.Reps.ToString();
         }
 
         //Button click event for editing the details
-        private void EditButton_Clicked(object sender, EventArgs e)
+        private async void EditButton_Clicked(object sender, EventArgs e)
         {
-
+            if (EditButton.Text == "Edit")
+            {
+                WeightEditor.IsReadOnly = false;
+                RepsEditor.IsReadOnly = false;
+                EditButton.Text = "Save";
+            }
+            else
+            {
+                int.TryParse(RepsEditor.Text, out int reps);
+                thisExercise.Reps = reps;
+                double.TryParse(WeightEditor.Text, out double weight);
+                thisExercise.Weight = weight;
+                double oneRepMax = Math.Round((weight * 36) / (37 - reps), 1);
+                thisExercise.OneRep = oneRepMax;
+                ORMOutPut.Text = oneRepMax.ToString();
+                EditButton.Text = "Edit";
+                await App.ORMRepo.EditORMAsync(thisExercise);
+            }
         }
 
         //Button click event for deleting an entry

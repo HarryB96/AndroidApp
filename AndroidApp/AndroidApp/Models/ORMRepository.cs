@@ -40,6 +40,11 @@ namespace AndroidApp
             }
         }
 
+        public async Task EditORMAsync(OneRepMax oneToEdit)
+        {
+            await conn.UpdateAsync(oneToEdit);
+        }
+
         //Asynchronous task to remove an entry form the database
         public async Task RemoveORMAsync(OneRepMax oneToDelete)
         {
