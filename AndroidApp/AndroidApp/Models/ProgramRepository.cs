@@ -23,12 +23,16 @@ namespace AndroidApp
         {
             conn = new SQLiteAsyncConnection(dbPath);
             conn.CreateTableAsync<Program>().Wait();
-            var list = GetJsonDataAsync().Result;
-            foreach (var item in list)
+            if (conn.Table<Program>().CountAsync().Result == 0)
             {
-                conn.InsertAsync(item);
+                var list = GetJsonDataAsync().Result;
+                foreach (var item in list)
+                {
+                    conn.InsertAsync(item);
+                }
             }
         }
+        //Retrieving program data from the SQLite database
         public async Task<List<Program>> GetProgramAsync()
         {
             try
@@ -41,6 +45,7 @@ namespace AndroidApp
             }
             return new List<Program>();
         }
+        //Retrieving initial data for the program page from a JSON file
         public async Task<List<Program>> GetJsonDataAsync()
         {
             string jsonFileName = "ProgramContent.json";

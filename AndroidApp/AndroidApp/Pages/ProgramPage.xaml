@@ -9,18 +9,76 @@
              Title="Program"
              x:Class="AndroidApp.Pages.ProgramPage">
     <ContentPage.Content>
-        <StackLayout>
-            <ListView x:Name="programList">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell Height="30">
-                            <StackLayout Padding="5">
-                                <Label Text="{Binding ExerciseName}" FontSize="Large"/>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+        <ScrollView Orientation="Both">
+            <FlexLayout>
+                <Frame WidthRequest="380"
+                       HeightRequest="600">
+                    <FlexLayout Direction="Column">
+                        <ListView x:Name="LegsList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="30">
+                                        <StackLayout Padding="5">
+                                            <Label Text="{Binding ExerciseName}" FontSize="Large"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </FlexLayout>
+                </Frame>
+
+                <Frame WidthRequest="380"
+                   HeightRequest="600">
+                    <FlexLayout Direction="Column">
+                        <ListView x:Name="ChestList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="30">
+                                        <StackLayout Padding="5">
+                                            <Label Text="{Binding ExerciseName}" FontSize="Large"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </FlexLayout>
+                </Frame>
+
+                <Frame WidthRequest="380"
+                   HeightRequest="600">
+                    <FlexLayout Direction="Column">
+                        <ListView x:Name="BackList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="30">
+                                        <StackLayout Padding="5">
+                                            <Label Text="{Binding ExerciseName}" FontSize="Large"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </FlexLayout>
+                </Frame>
+                
+                <Frame WidthRequest="380"
+                   HeightRequest="600">
+                    <FlexLayout Direction ="Column">
+                        <ListView x:Name="ShouldersList">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell Height="30">
+                                        <StackLayout Padding="5">
+                                            <Label Text="{Binding ExerciseName}" FontSize="Large"/>
+                                        </StackLayout>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                    </FlexLayout>
+                </Frame>
+            </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
