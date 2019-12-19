@@ -11,26 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace AndroidApp.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProgramPage : ContentPage
+    public partial class ProgramPage : TabbedPage
     {
-        List<Program> program;
         public ProgramPage()
         {
             InitializeComponent();
-            Initialise();
-        }
-        public async void Initialise()
-        {
-            program = await App.ProgramRepo.GetProgramAsync();
-            SortList();
-        }
 
-        public void SortList()
-        {
-            LegsList.ItemsSource = program.Where(e => e.Day == "Legs").OrderBy(e => e.ExerciseOrder).ToList();
-            ChestList.ItemsSource = program.Where(e => e.Day == "Chest").OrderBy(e => e.ExerciseOrder).ToList();
-            BackList.ItemsSource = program.Where(e => e.Day == "Back").OrderBy(e => e.ExerciseOrder).ToList();
-            ShouldersList.ItemsSource = program.Where(e => e.Day == "Shoulders").OrderBy(e => e.ExerciseOrder).ToList();
+            this.Children.Add(new Legs());
+            this.Children.Add(new Chest());
+            this.Children.Add(new Back());
+            this.Children.Add(new Shoulders());
         }
     }
 }

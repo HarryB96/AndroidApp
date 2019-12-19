@@ -63,6 +63,8 @@ namespace AndroidApp.Pages
                 thisExercise.OneRep = oneRepMax;
                 ORMOutPut.Text = oneRepMax.ToString();
                 EditButton.Text = "Edit";
+                WeightEditor.IsReadOnly = true;
+                RepsEditor.IsReadOnly = true;
                 await App.ORMRepo.EditORMAsync(thisExercise);
             }
         }

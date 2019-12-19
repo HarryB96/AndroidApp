@@ -59,5 +59,10 @@ namespace AndroidApp
             }
             return programFromJson;
         }
+
+        public async Task EditProgramAsync(Program oneToEdit)
+        {
+            await conn.UpdateAsync(oneToEdit);
+        }
     }
 }
