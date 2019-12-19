@@ -12,13 +12,13 @@ namespace AndroidApp
         //File path for SQLite database
         string dbPath => FileAccessHelper.GetLocalFilePath("gym.db3");
         internal static ORMRepository ORMRepo { get; private set; }
+        internal static ProgramRepository ProgramRepo { get; private set; }
         public App()
         {
             //Initialising Repository for One Rep Maxes
             InitializeComponent();
-
             ORMRepo = new ORMRepository(dbPath);
-
+            ProgramRepo = new ProgramRepository(dbPath);
             //Setting the main page as a navigation page
             MainPage = new NavigationPage(new MainPage());
         }
